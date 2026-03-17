@@ -2,13 +2,13 @@ apiVersion: metallb.io/v1beta1
 kind: IPAddressPool
 metadata:
   name: pavi-ip-pool
-  namespace: pavi-ns
+  namespace: metallb-system   # must be metallb-system
 spec:
   addresses:
-    - 192.168.1.240-192.168.1.250   # ⚠️ CHANGE THIS
+    - 192.168.159.240-192.168.159.250   # use IP range from your cluster network
 ---
 apiVersion: metallb.io/v1beta1
 kind: L2Advertisement
 metadata:
   name: pavi-l2
-  namespace: pavi-ns
+  namespace: metallb-system   # must be metallb-system
