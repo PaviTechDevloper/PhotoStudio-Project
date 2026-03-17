@@ -1,20 +1,20 @@
 apiVersion: apps/v1
 kind: Deployment
-metadate:
+metadata:
   name: mongo-db
-  Namespace: pavithra-ns 
+  namespace: pavi-ns
 spec:
-  repicas: 1
+  replicas: 1
   strategy:
     type: RollingUpdate
     rollingUpdate:
       maxUnavailable: 1
       maxSurge: 1
   selector:
-    matchLables:
+    matchLabels:
       app: mongo
   template:
-    metadate:
+    metadata:
       labels:
         app: mongo
     spec:
@@ -27,15 +27,16 @@ spec:
 ---
 apiVersion: v1
 kind: Service
-metadate:
+metadata:
   name: mongo-service
-  Namespace: pavithra-ns
+  namespace: pavi-ns
 spec:
   selector:
     app: mongo
   ports:
     - protocol: TCP
-      port: 3000
-      targetPort: 3000
+      port: 27017
+      targetPort: 27017
   type: ClusterIP
 
+  

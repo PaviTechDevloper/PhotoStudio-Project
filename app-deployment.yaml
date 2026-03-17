@@ -1,39 +1,39 @@
 apiVersion: apps/v1
 kind: Deployment
-metadate:
-  name: app-Deployment
-  Namespace: pavithra-ns
+metadata:
+  name: app-deployment
+  namespace: pavi-ns
 spec:
-  repicas: 1
+  replicas: 1
   selector:
-    matchLables: 
+    matchLabels:
       app: backend
   template:
-    labels:
-      app: backend
+    metadata:
+      labels:
+        app: backend
     spec:
       containers:
         - name: backend-container
-          image: pavithrasambath2003/photostudio-app:v1
+          image: shubha20/photostudio:v1.0.0
           ports:
             - containerPort: 3000
           envFrom:
             - configMapRef:
-              name: backend-config
-          
+                name: backend-config
 ---
 
 apiVersion: v1
 kind: Service
-metadate:
+metadata:
   name: app-service
-  Namespace: pavithra-ns
+  namespace: pavi-ns
 spec:
   selector:
-    app: mongo
+    app: backend
   ports:
     - protocol: TCP
       port: 3000
       targetPort: 3000
-  type: ClusterIP
+  type: NodePort
 
