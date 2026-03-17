@@ -1,8 +1,8 @@
 apiVersion: v1
 kind: ConfigMap
-metadate:
+metadata:
   name: backend-config
-  Namespace: pavithra-ns 
+  namespace: pavi-ns 
 data:
   MONGODB_AUTH_URI: mongodb://mongo-service:27017/artgallery
   MONGODB_FEEDBACK_URI: mongodb://mongo-service:27017/artgallery
