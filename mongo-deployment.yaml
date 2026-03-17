@@ -1,0 +1,41 @@
+apiVersion: apps/v1
+kind: Deployment
+metadate:
+  name: mongo-db
+  Namespace: pavithra-ns 
+spec:
+  repicas: 1
+  strategy:
+    type: RollingUpdate
+    rollingUpdate:
+      maxUnavailable: 1
+      maxSurge: 1
+  selector:
+    matchLables:
+      app: mongo
+  template:
+    metadate:
+      labels:
+        app: mongo
+    spec:
+      containers:
+        - name: mongodb-container
+          image: mongo
+          ports:
+            - containerPort: 27017
+
+---
+apiVersion: v1
+kind: Service
+metadate:
+  name: mongo-service
+  Namespace: pavithra-ns
+spec:
+  selector:
+    app: mongo
+  ports:
+    - protocol: TCP
+      port: 3000
+      targetPort: 3000
+  type: ClusterIP
+
