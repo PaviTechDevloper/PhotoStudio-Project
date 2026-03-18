@@ -21,6 +21,7 @@ spec:
           envFrom:
             - configMapRef:
                 name: backend-config
+                value: "pavi cluster"
 ---
 
 apiVersion: v1
