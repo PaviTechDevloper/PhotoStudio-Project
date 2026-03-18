@@ -18,10 +18,18 @@ spec:
           image: shubha20/photostudio:v1.0.0
           ports:
             - containerPort: 3000
+          resources:
+            requests:
+              memory: "128Mi"
+              cpu: "50m"
+            limits:
+              memory: "256Mi"
+              cpu: "100m"      
           envFrom:
             - configMapRef:
                 name: backend-config
                 value: "pavi cluster"
+
 ---
 
 apiVersion: v1
